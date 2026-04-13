@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #f4f4f4;
+    }
+
+    .calculator {
+      width: 320px;
+      padding: 16px;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    #result {
+      font-weight: bold;
+      text-align: center;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h1>Simple Calculator</h1>
+
+    <input id="num1" type="number" placeholder="First number" />
+    <input id="num2" type="number" placeholder="Second number" />
+
+    <select id="operation">
+      <option value="add">Add (+)</option>
+      <option value="subtract">Subtract (-)</option>
+      <option value="multiply">Multiply (×)</option>
+      <option value="divide">Divide (÷)</option>
+    </select>
+
+    <button id="calculateBtn">Calculate</button>
+
+    <div id="result">Result: </div>
+  </div>
+
+  <script>
+    function add(a, b) {
+      return a + b;
+    }
+
+    function subtract(a, b) {
+      return a - b;
+    }
+
+    function substract(a, b) {
+      return subtract(a, b);
+    }
+
+    function multiply(a, b) {
+      return a * b;
+    }
+
+    function divide(a, b) {
+      if (b === 0) {
+        return "Cannot divide by zero";
+      }
+      return a / b;
+    }
+
+    document.getElementById("calculateBtn").addEventListener("click", function () {
+      const num1 = parseFloat(document.getElementById("num1").value);
+      const num2 = parseFloat(document.getElementById("num2").value);
+      const operation = document.getElementById("operation").value;
+      const resultElement = document.getElementById("result");
+
+      if (Number.isNaN(num1) || Number.isNaN(num2)) {
+        resultElement.textContent = "Result: Please enter valid numbers";
+        return;
+      }
+
+      let result;
+
+      if (operation === "add") {
+        result = add(num1, num2);
+      } else if (operation === "subtract") {
+        result = substract(num1, num2);
+      } else if (operation === "multiply") {
+        result = multiply(num1, num2);
+      } else {
+        result = divide(num1, num2);
+      }
+
+      resultElement.textContent = `Result: ${result}`;
+    });
+  </script>
+</body>
+</html>

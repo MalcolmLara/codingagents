@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repo Onboarding"
+  short_description: "Analyze a repo and publish beginner onboarding to Obsidian."
+  default_prompt: "Analyze this repository and produce onboarding documentation with a beginner-friendly walkthrough and a Mermaid diagram, then publish it to Obsidian."
